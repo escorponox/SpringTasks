@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="ejercicio2" class="spring.Ejercicio1Impl" scope="prototype"/>
 
@@ -12,5 +12,16 @@
     <bean id="ej2Factory" class="spring.FactoryMethod" factory-method="getInstance">
         <property name="prueba" value="hola"/>
     </bean>
+
+    <bean id="ejercicio3" class="spring.Ejercicio3Impl"/>
+
+    <aop:config>
+        <aop:aspect ref="ejercicio3">
+            <aop:pointcut id="ej3pointcut" expression="execution(* *.holaAop(..))"/>
+            <aop:before pointcut-ref="ej3pointcut" method="before"/>
+            <aop:after-returning pointcut-ref="ej3pointcut" method="after"/>
+            <aop:before pointcut-ref="ej3pointcut" method="excep"/>
+        </aop:aspect>
+    </aop:config>
 
 </beans>
