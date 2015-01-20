@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="ejercicio3" class="spring.Ejercicio3"/>
+
+    <bean id="ejercicio3aux" class="spring.Ejercicio3Aux"/>
+
+    <aop:config>
+        <aop:aspect ref="ejercicio3">
+            <aop:pointcut id="ej3pointcut" expression="execution(* spring.Ejercicio3Aux.holaAop(..))"/>
+            <aop:before pointcut-ref="ej3pointcut" method="before"/>
+            <aop:after-returning pointcut-ref="ej3pointcut" method="after"/>
+            <aop:after-throwing pointcut-ref="ej3pointcut" method="excep"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

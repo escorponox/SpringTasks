@@ -32,13 +32,13 @@ public class Ejercicio1Impl implements Ejercicio1, BeanNameAware, BeanFactoryAwa
 
     @Override
     public Object postProcessBeforeInitialization(Object o, String s) throws BeansException {
-        System.out.println("postProcessBeforeInitialization: " + s);
+        System.out.println("postProcessBeforeInitialization: " + s + o.toString());
         return o;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
-        System.out.println("postProcessAfterInitialization: " + s);
+        System.out.println("postProcessAfterInitialization: " + s + o.toString());
         return o;
     }
 

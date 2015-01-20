@@ -1,7 +1,17 @@
 package spring;
 
-public interface Ejercicio3 {
+public class Ejercicio3 {
 
-    String holaAop(Boolean lanzaExcepcion) throws Exception;
+    public void before() {
+        System.out.println("Before Aop");
+    }
+
+    public void after() {
+        System.out.println("After Aop");
+    }
+
+    public void excep() {
+        System.out.println("Exception Aop");
+    }
 
 }
