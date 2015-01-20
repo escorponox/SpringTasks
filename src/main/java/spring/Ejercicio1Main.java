@@ -12,5 +12,7 @@ public class Ejercicio1Main {
         Ejercicio1 ejercicio1 = (Ejercicio1) context.getBean("ejercicio1");
 
         System.out.println(ejercicio1.holaMundo());
+
+        ((ClassPathXmlApplicationContext) context).close();
     }
 }
